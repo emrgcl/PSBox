@@ -35,7 +35,7 @@ Param
         ValueFromPipelineByPropertyName = $true,
         ValueFromRemainingArguments = $false, 
         Position = 0)]
-    [Alias("Server", "Host", "Node", "NetworkName", "NetbiosComputerName", "fqdn", "DispLayName")] 
+    [Alias("Server", "Host", "Node", "NetworkName", "DnsHostName", "fqdn", "DispLayName")] 
     [String[]]$ServerName,
 
     # Switch Parameter to hide success results.
