@@ -4,13 +4,13 @@
 .DESCRIPTION
    This script tests PowerShell Remoting using Test-WSMan cmdLet and returns a Custom PSobject with ServerName and Result.
 .EXAMPLE
-   test-psremoting -ServerName "server1","server2","server3"
+   .\test-psremoting.ps1 -ServerName "server1","server2","server3"
 .EXAMPLE
-    get-scomagent | test-psremoting -HideSuccess | export-csv -Path c:\temp\wsmanresult.csv
+    get-scomagent | .\test-psremoting.ps1 -HideSuccess | export-csv -Path c:\temp\wsmanresult.csv
 .EXAMPLE
-    get-content | test-psremoting -HideSuccess
+    get-content | .\test-psremoting.ps1 -HideSuccess
 .EXAMPLE
-    get-content | test-psremoting | Group-Object -PropertyName ErrorCode
+    get-content | .\test-psremoting.ps1 | Group-Object -PropertyName ErrorCode
 .INPUTS
    System.String
 .OUTPUTS
@@ -24,7 +24,7 @@
 #>
 [CmdletBinding( 
     SupportsShouldProcess = $true, 
-    HelpUri = 'http://www.microsoft.com/',
+    HelpUri = 'https://github.com/emrgcl/PSBox',
     ConfirmImpact = 'Medium')]
 [OutputType([String])]
 Param
