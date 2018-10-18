@@ -7,13 +7,13 @@ You can use this script in large sets of servers. In an environment of 500 serve
 ### Examples
 + Pipe from SCOM
 ```powershell 
-get-scomagent | test-psremoting -HideSuccess | export-csv -Path c:\temp\wsmanresult.csv
+get-scomagent | .\test-psremoting.ps1 -HideSuccess | export-csv -Path c:\temp\wsmanresult.csv
 ````
 + Pipe From a text file and group object to make a summary report 
 ```powershell
-get-content | test-psremoting | Group-Object -PropertyName ErrorCode
+get-content | .\test-psremoting.ps1 | Group-Object -PropertyName ErrorCode
 ```
 + Dont pipe just provide the Server Names
 ```powershell
-test-psremoting -ServerName "server1","server2","server3"
+.\test-psremoting.ps1 -ServerName "server1","server2","server3"
 ```
