@@ -24,7 +24,11 @@
 #>
 [CmdletBinding( 
     SupportsShouldProcess = $true, 
+<<<<<<< HEAD
     HelpUri = 'https://github.com/emrgcl/PSBox',
+=======
+    HelpUri = 'https://github.com/emrgcl/PSBox/blob/master/README.md',
+>>>>>>> 515584af58c043db46574fea840bed4bc6c4d7d7
     ConfirmImpact = 'Medium')]
 [OutputType([String])]
 Param
