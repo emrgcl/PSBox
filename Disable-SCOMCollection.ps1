@@ -4,7 +4,7 @@
 .DESCRIPTION
    Disables Performance or Event Collection Events
 .EXAMPLE
-   Get-SCOMManagementPack | where {$_.Name -match 'SQL.+2014\.Monitoring'}| .\Disable-SCOMCollection.ps1 -ManagementServer tgarscmmgs01 -OverrideMP "Test MP" -DisableTarget PerformanceCollection -WhatIf
+   Get-SCOMManagementPack | where {$_.Name -match 'SQL.+2014\.Monitoring'}| .\Disable-SCOMCollection.ps1 -ManagementServer test -OverrideMP "Test MP" -DisableTarget PerformanceCollection -WhatIf
 
    What if: Performing the operation "Disabling PerformanceCollection Rule in (Test MP)" on target "MSSQL 2014: DB File Allocated Free Space (MB)".
    What if: Performing the operation "Disabling PerformanceCollection Rule in (Test MP)" on target "MSSQL 2014: Parallel GC work item/sec".
@@ -26,7 +26,6 @@
         
         # ManagementServer to be selected
         [Parameter(Mandatory=$true)]
-        [ValidateSet("ptekscmmgs01","ptekscmmgs02","tgarscmmgs01","tgarscmmgs02","pfinscmmgs01","pfinscmmgs02","pdmzscmmgs01","pdmzscmmgs02")]
         [string]$ManagementServer,
 
         #DisableTarget
