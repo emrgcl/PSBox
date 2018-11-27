@@ -17,3 +17,4 @@ get-content | .\test-psremoting.ps1 | Group-Object -PropertyName ErrorCode
 ```powershell
 .\test-psremoting.ps1 -ServerName "server1","server2","server3"
 ```
+## Disable-SCOMCollection.ps1
