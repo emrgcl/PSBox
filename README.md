@@ -18,3 +18,23 @@ get-content | .\test-psremoting.ps1 | Group-Object -PropertyName ErrorCode
 .\test-psremoting.ps1 -ServerName "server1","server2","server3"
 ```
 ## Disable-SCOMCollection.ps1
+
+## ListSCOMObjects.ps1
+Lists the objects of a class and parses the path so that the every single parent host is reported on the object. 
+Great to check the number of instances of a class on a Server.
+
+### Examples
++  Lists the objects and formats as table
+```powershell 
+.\ListSCOMObjects.ps1 -ManagementServer ms1fqdn -Class "sql database" | ft -AutoSize
+powershell 
+
+OjectHost1   ServerName                Object                                                                                  AgentHealth  ObjectHealth
+----------   ----------                ------                                                                                  -----------  ------------
+MSSQLSERVER  cccc.litware.com	         cbslog                                                                                          True       Success
+MSSQLSERVER  tststst.litware.com       ETA_KKST_2015                                                                                   True       Success
+WINCCT        test1.litware.com        DB1                                                                                             True       Success
+MSSQLSERVER  WWWSQL1.srvdmz.com        DB2                                                                                             True       Warning
+MSSQLSERVER  tstFGSDB.litware.com      DBXXX                                                                                           True       Success
+SQLT1        MSSQLXX1.litware.com      prjtest                                                                                         True       Success
+MSSQLSERVER  yyyy.litware.com          KOTAX                                                                                           True       Success
