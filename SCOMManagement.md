@@ -44,3 +44,44 @@ $rule=get-scomrule -DisplayName "Collection Rule for Windows Restarted Events"
 Get-SCOMEvent -Rule $rule | where {$_.TimeGenerated -gt (Get-Date).AddDays(-7) } | Group-Object -Property LoggingComputer  |Sort-Object -Property Count -Descending | Select-Object -first 10 -Property Count,Name
 
  ```
+
+Lists the servers with the computer not reachable monitor in red.
+
+```powershell
+
+$MonitorColl = @()
+$MonitorColl = New-Object "System.Collections.Generic.List[Microsoft.EnterpriseManagement.Configuration.ManagementPackMonitor]"
+
+$objects = get-scomclass -DisplayName "Health Service Watcher" | Get-SCOMClassInstance
+$monitor = Get-SCOMMonitor -DisplayName 'Computer Not Reachable'
+
+#Add this monitor to a collection
+#$MonitorColl.Add($Monitor)
+
+#Get the state associated with this specific monitor
+#$State=$Object.getmonitoringstates($MonitorColl)
+
+ForEach ($object in $objects)
+{
+    #Set the monitor collection to empty and create the collection to contain monitors
+    $MonitorColl = @()
+    $MonitorColl = New-Object "System.Collections.Generic.List[Microsoft.EnterpriseManagement.Configuration.ManagementPackMonitor]"
+
+    #Get specific monitors matching a displayname for this instance of URLtest ONLY
+    #$Monitor = Get-SCOMMonitor -Instance $object -Recurse| where {$_.DisplayName -eq "Computer Not Reachable"} 
+    
+    #Add this monitor to a collection
+    $MonitorColl.Add($Monitor)
+
+    #Get the state associated with this specific monitor
+    $State=$object.getmonitoringstates($MonitorColl)
+if ($state.HealthState -eq 'Error') {  
+$Props=@{}
+$Props.ServerName=$Object.DisplayName
+$Props.Reachable=$state.HealthState
+New-Object -TypeName PSCustomObject -Property $props | Write-Output 
+}
+}
+
+```
+
