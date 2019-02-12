@@ -35,3 +35,12 @@ Run the below line on the management server to figure out which agents are conne
  Get-NetTCPConnection -LocalPort 5723 | Format-Table -Property @{Name="LocalDNS";Expression={(resolve-dnsname $_.LocalAddress).NameHost}},LocalPort,@{Name="RemoteDNS";Expression={(resolve-dnsname $_.RemoteAddress).NameHost}},RemotePort,@{Name="ProcessName";Expression={(Get-Process -PID ($_.OwningProcess)).Name}},state 
  
  ```
+
+Top Servers restarted in the last 7 days. 
+
+```powershell
+
+$rule=get-scomrule -DisplayName "Collection Rule for Windows Restarted Events"
+Get-SCOMEvent -Rule $rule | where {$_.TimeGenerated -gt (Get-Date).AddDays(-7) } | Group-Object -Property LoggingComputer  |Sort-Object -Property Count -Descending | Select-Object -first 10 -Property Count,Name
+
+ ```
