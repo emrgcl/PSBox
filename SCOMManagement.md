@@ -45,7 +45,7 @@ Get-SCOMEvent -Rule $rule | where {$_.TimeGenerated -gt (Get-Date).AddDays(-7) }
 
  ```
 
-Lists the servers with the computer not reachable monitor in red.
+Lists the servers with the computer not reachable monitor in red. Script referring to Kevin Holman but a couple modifications.
 
 ```powershell
 
@@ -54,12 +54,6 @@ $MonitorColl = New-Object "System.Collections.Generic.List[Microsoft.EnterpriseM
 
 $objects = get-scomclass -DisplayName "Health Service Watcher" | Get-SCOMClassInstance
 $monitor = Get-SCOMMonitor -DisplayName 'Computer Not Reachable'
-
-#Add this monitor to a collection
-#$MonitorColl.Add($Monitor)
-
-#Get the state associated with this specific monitor
-#$State=$Object.getmonitoringstates($MonitorColl)
 
 ForEach ($object in $objects)
 {
@@ -75,6 +69,7 @@ ForEach ($object in $objects)
 
     #Get the state associated with this specific monitor
     $State=$object.getmonitoringstates($MonitorColl)
+
 if ($state.HealthState -eq 'Error') {  
 $Props=@{}
 $Props.ServerName=$Object.DisplayName
