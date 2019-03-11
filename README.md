@@ -38,3 +38,7 @@ MSSQLSERVER  WWWSQL1.srvdmz.com        DB2                                      
 MSSQLSERVER  tstFGSDB.litware.com      DBXXX                                                                                           True       Success
 SQLT1        MSSQLXX1.litware.com      prjtest                                                                                         True       Success
 MSSQLSERVER  yyyy.litware.com          KOTAX                                                                                           True       Success
+
+## Install-SCOMAgent.ps1
+
+Installs scom agent withouth any controls or checks (yet:))
