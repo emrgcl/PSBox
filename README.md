@@ -43,4 +43,4 @@ MSSQLSERVER  yyyy.litware.com          KOTAX                                    
 
 ## Install-SCOMAgent.ps1
 
-Installs scom agent withouth any controls or checks (yet:))
+Installs scom agent without any controls or checks (yet:))
