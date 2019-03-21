@@ -5,7 +5,7 @@
    Script requires scom agent management pack please install and impor the management pack from:
    https://gallery.technet.microsoft.com/SCOM-Agent-Management-b96680d5
 .EXAMPLE
-   .\Add-OMSWorkspace.ps1 -WorkspaceKey 'FEfstXxZl6BL4O55Eo7c85Z0smg8C1dfCp0MzMq/QtSUtELd245DDe+k7Hi++a7cwVwLWElofWy0L67QtrrdZA==' -WorkspaceID 'f13c1e8b-2956-4a35-9f5f-fd671ca8ea2d' -ManagementServer 'ovwscommng1' -GroupDisplayName 'SQL Computers' -ProxyURL 'ovwscomgw.kfs.local:8080' -Verbose
+   .\Add-OMSWorkspace.ps1 -WorkspaceKey 'xxxxxx' -WorkspaceID 'yyyyyyyy' -ManagementServer 'ms1.contoso.com' -GroupDisplayName 'SQL Computers' -ProxyURL 'omsgateway.contoso.com:8080' -Verbose
 #>
 [CmdLetBinding()]
 Param(
