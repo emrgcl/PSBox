@@ -1,3 +1,5 @@
+
+
 The following line lists scom Gateways with their failover servers.
 ```powershell
 
