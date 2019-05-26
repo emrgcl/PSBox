@@ -1,4 +1,9 @@
 
+```powershell
+ 
+Get-SCOMClass -DisplayName "Health Service Watcher" | Get-SCOMClassInstance | where {$_.HealthState -eq 'Error'}
+ 
+```
 
 The following line lists scom Gateways with their failover servers.
 ```powershell
