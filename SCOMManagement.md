@@ -1,3 +1,21 @@
+Runs HSLockodwn on multiple dcs. Requires Powershell Remoting.
+
+```powershell
+ 
+Import-Module OperationsManager
+ 
+$ProblemDCs="dc1","dc2","dc3"
+ 
+$AddScriptBlock={
+set-location "C:\Program Files\Microsoft Monitoring Agent\Agent"
+.\HSLockdown.exe /A 'NT AUTHORITY\SYSTEM'
+get-service -Name HealthService | Restart-Service -Verbose
+}
+ 
+Invoke-Command -ScriptBlock $AddScriptBlock -ComputerName $ProblemDCs
+```
+
+
 Returns the unhealthy Health Service Watchers
 
 ```powershell
