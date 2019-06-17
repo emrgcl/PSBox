@@ -131,6 +131,6 @@ Lists recoveries in specified management pack with the class displayNames targed
 
 ```powershell
 
-Get-SCOMManagementPack -Name YKBCustomServisIzleme  | Get-SCOMRecovery | Select-Object -Property DisplayName,@{Name="Target";Expression={(get-scomclass -Name $_.Target.Identifier.Path).DisplayName}},Enabled 
+Get-SCOMManagementPack -Name myMPName  | Get-SCOMRecovery | Select-Object -Property DisplayName,@{Name="Target";Expression={(get-scomclass -Name $_.Target.Identifier.Path).DisplayName}},Enabled 
 
 ```
