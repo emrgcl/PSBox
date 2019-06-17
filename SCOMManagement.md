@@ -124,3 +124,13 @@ New-Object -TypeName PSCustomObject -Property $props | Write-Output
 
 ```
 
+
+# Recoveries
+
+Lists recoveries in specified management pack with the class displayNames targed. USeful in finding out custom recoveries created.
+
+```powershell
+
+Get-SCOMManagementPack -Name YKBCustomServisIzleme  | Get-SCOMRecovery | Select-Object -Property DisplayName,@{Name="Target";Expression={(get-scomclass -Name $_.Target.Identifier.Path).DisplayName}},Enabled 
+
+```
