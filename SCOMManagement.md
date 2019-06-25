@@ -1,3 +1,7 @@
+#  Agent Management
+
+Agent and Management Server management scripts.
+
 Runs HSLockodwn on multiple dcs. Requires Powershell Remoting.
 
 ```powershell
@@ -38,6 +42,10 @@ List of Primary and Failover MS for SCOM agents
 Get-SCOMAgent | select-object -Property DisplayName, PrimaryManagementServerName, @{Name='FailoverMS';Expression={($_.GetFailoverManagementServers()).Name}}
 
 ```
+
+# Alerts
+
+Alert related powershell scrirps 
 
 Returns top 20 active alerts in scom console
 
