@@ -43,6 +43,21 @@ Get-SCOMAgent | select-object -Property DisplayName, PrimaryManagementServerName
 
 ```
 
+## Updating Agents
+
+Following line updates the agent to UR7 using PSSession
+```powershell
+
+Invoke-Command -session $2016rtms -ScriptBlock {invoke-expression 'C:\Windows\system32\msiexec.exe /p C:\temp\ur7\KB4492182-AMD64-Agent.msp /qn'}
+
+```
+Following line gets the latest success event for agent update using pssesion
+```powershell
+
+Invoke-Command -session $2016rtms -ScriptBlock {Get-EventLog -LogName Application -Source MsiInstaller -InstanceId 1022 -Message *System?Center?2016?Operations?Manager?Update?Rollup ?7* -Newest 1 | Select-Object -Property TimeGenerated,Message}
+
+```
+
 # Alerts
 
 Alert related powershell scrirps 
