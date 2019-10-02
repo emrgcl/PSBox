@@ -1,3 +1,13 @@
+# Management Packs
+## References
+The following script line lists references used by unsealed managementpacks which helps in migrating management groups to list which mps needs to be insalled on the management group.
+
+```PowerShell
+
+((get-scommanagementpack).where({$_.Sealed -eq $false})).References.Value.Name | Select-Object -Unique | Sort-Object
+
+```
+
 #  Agent Management
 
 Agent and Management Server management scripts.
