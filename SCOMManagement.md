@@ -1,6 +1,6 @@
 # Management Packs
 ## References
-The following script line lists references used by unsealed managementpacks which helps in migrating management groups to list which mps needs to be insalled on the management group.
+The following script line lists references used by unsealed managementpacks which helps in migrating management groups to list which mps needs to be insalled on the new management group.
 
 ```PowerShell
 
