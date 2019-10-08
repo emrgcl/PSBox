@@ -1,5 +1,38 @@
 # Management Packs
-## References
+
+# Group Management
+## Getting Group of a computer
+```PowerShell
+[cmdletbinding()]
+Param(
+
+[string]$ComputerName,
+[string]$ManagementServer
+
+)
+Import-Module OperationsManager
+if (!(Get-SCOMManagementGroupConnection).Isactive) {
+
+New-SCOMManagementGroupConnection -ComputerName $ManagementServer
+
+}
+
+$ComputerObjectID = Get-SCOMClass -Name Microsoft.Windows.Computer | Get-SCOMClassInstance | where {$_.Name -eq $ComputerName}
+
+$Groups = Get-SCOMGroup
+$groups | ForEach-Object {
+
+if ((($_).GetRelatedMonitoringObjects().Where({$_.GetLeastDerivedNonAbstractClass().Name -eq 'Microsoft.Windows.Computer'})).Name -contains $ComputerName) {
+"$computerName is member of $($_.DisplayName)"
+}
+
+}
+
+
+```
+
+
+# References
 The following script line lists references used by unsealed managementpacks which helps in migrating management groups to list which mps needs to be insalled on the new management group.
 
 ```PowerShell
