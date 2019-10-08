@@ -70,7 +70,7 @@ Returns the unhealthy Health Service Watchers
 Get-SCOMClass -DisplayName "Health Service Watcher" | Get-SCOMClassInstance | where {$_.HealthState -eq 'Error'}
  
 ```
-
+## Agent and Gateway Failover
 The following line lists scom Gateways with their failover servers.
 ```powershell
 
