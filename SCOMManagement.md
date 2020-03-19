@@ -1,5 +1,17 @@
 # Management Packs
 
+## Management Group Information
+Database and Datawarehouse Information
+
+```Powershell
+Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Microsoft Operations Manager\3.0\Setup' -Name DatabaseServerName,DatawarehousedbServerName | Select-Object  DatabaseServerName,DatawarehousedbServerName | ft -AutoSize
+```
+Management Server Information
+
+```PowerShell
+Get-SCOMManagementServer | Select-Object -Property HealthState,DisplayName,Version,IsGateway ,IPAddress ,ActionAccountIdentity,@{Name="AgentCount";Expression={(($_).GetAgentManagedComputers()).Count}},InstallTime | ft -AutoSize
+```
+
 # Group Management
 ## Getting Group of a computer
 ```PowerShell
