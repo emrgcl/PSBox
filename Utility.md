@@ -10,7 +10,7 @@ Get-ChildItem -Path Cert:\LocalMachine\My | Select-Object -Property Thumbprint,@
 # DateTime
 
 Converting Datetime to CIMDatetime
-```
+```PowerShell
 Function Get-CIMDateTime {
 
 <#
