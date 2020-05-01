@@ -9,7 +9,7 @@ Get-ChildItem -Path Cert:\LocalMachine\My | Select-Object -Property Thumbprint,@
 
 # DateTime
 
-Converting Datetime to CIMDatetime
+Converting Datetime to CIMDatetime. In WMI/CIM .Net datetime doesnt work. need to convert .Net datetime to CIM/WMI datetime.
 ```PowerShell
 Function Get-CIMDateTime {
 
